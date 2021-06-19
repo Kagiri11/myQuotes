@@ -24,6 +24,6 @@ class MyQuotesFragment : Fragment() {
 
     }
 
-    
+
 
 }

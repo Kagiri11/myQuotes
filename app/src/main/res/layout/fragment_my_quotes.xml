@@ -35,6 +35,15 @@
             app:layout_constraintTop_toBottomOf="@id/imageView"
             app:layout_constraintBottom_toBottomOf="parent" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_add_quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/purple_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="30dp"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

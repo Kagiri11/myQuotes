@@ -8,19 +8,16 @@
     <fragment
         android:id="@+id/quoteFragment"
         android:name="com.example.myquotes.ui.fragments.QuoteFragment"
-        android:label="fragment_quote"
+        android:label="fragment_quotes"
         tools:layout="@layout/fragment_quote" >
         <action
-            android:id="@+id/action_quoteFragment_to_myQuotesFragment"
+            android:id="@+id/action_quote_to_quotes"
             app:destination="@id/myQuotesFragment" />
     </fragment>
     <fragment
         android:id="@+id/myQuotesFragment"
         android:name="com.example.myquotes.ui.fragments.MyQuotesFragment"
-        android:label="fragment_my_quotes"
+        android:label="fragment_my_quote"
         tools:layout="@layout/fragment_my_quotes" >
-        <action
-            android:id="@+id/action_myQuotesFragment_to_quoteFragment"
-            app:destination="@id/quoteFragment" />
     </fragment>
 </navigation>

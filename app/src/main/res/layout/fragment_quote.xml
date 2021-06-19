@@ -4,9 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="quoteViewModel"
-            type="com.example.myquotes.ui.fragments.QuoteViewModel" />
 
     </data>
 
@@ -42,9 +39,11 @@
             android:id="@+id/btn_myQuotes"
             android:layout_width="411dp"
             android:layout_height="69dp"
-            android:text="Button"
+            android:text="To Quotes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
