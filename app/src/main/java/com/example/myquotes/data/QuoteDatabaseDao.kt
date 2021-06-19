@@ -14,7 +14,7 @@ interface QuoteDatabaseDao {
     fun addQuote(quote:Quote)
 
     @Query("SELECT * FROM quote ORDER BY id DESC")
-    fun getQuotes():LiveData<List<Quote>>?
+    fun getQuotes():List<Quote>
 
     @Delete
     fun deleteQuote(quote: Quote)

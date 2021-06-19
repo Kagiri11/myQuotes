@@ -2,32 +2,30 @@ package com.example.myquotes.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
-import com.example.myquotes.databinding.FragmentMyQuotesBinding
 import com.example.myquotes.models.Quote
 
-class QuotesAdapter(private val quotes : List<Quote>) : RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>() {
-
-    inner class QuotesAdapterViewHolder(private val binding: FragmentMyQuotesBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(context: Context,quote: Quote){
-
-        }
+class QuotesAdapter( private val quotes : List<Quote>) :  RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
+    class QuotesAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        val author : TextView = view.findViewById(R.id.tv_Author_Item)
+        val message : TextView = view.findViewById(R.id.tv_Quote_Item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuotesAdapterViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding : FragmentMyQuotesBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_my_quotes,parent,false)
-
-        return QuotesAdapterViewHolder(binding)
+        return QuotesAdapterViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_quote,parent,false)
+        )
     }
 
     override fun onBindViewHolder(holder: QuotesAdapterViewHolder, position: Int) {
         val quoteItem = quotes[position]
-        holder.itemView
+        holder.author.text=quoteItem.author
+        holder.message.text = quoteItem.message
     }
 
-    override fun getItemCount(): Int = quotes.size
+    override fun getItemCount(): Int =quotes.size
 }
