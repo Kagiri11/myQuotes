@@ -11,11 +11,11 @@ import com.example.myquotes.models.Quote
 interface QuoteDatabaseDao {
 
     @Insert
-    fun addQuote(quote:Quote)
+    suspend fun addQuote(quote:Quote)
 
     @Query("SELECT * FROM quote ORDER BY id DESC")
-    fun getQuotes():List<Quote>
+    suspend fun getQuotes():List<Quote>
 
     @Delete
-    fun deleteQuote(quote: Quote)
+    suspend fun deleteQuote(quote: Quote)
 }
