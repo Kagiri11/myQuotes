@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="100dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/primaryColor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/primaryColor"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
     android:layout_margin="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/tv_Author_Item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="-Author"
-            tools:textSize="15sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:fontFamily="@font/arsenal_italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="-Author"
+            tools:textSize="15sp" />
+
         <TextView
             android:id="@+id/tv_Quote_Item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="-Author"
-            tools:textSize="15sp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:text="jjndc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_Author_Item"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_Author_Item"
+            tools:text="-Author"
+            tools:textSize="15sp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

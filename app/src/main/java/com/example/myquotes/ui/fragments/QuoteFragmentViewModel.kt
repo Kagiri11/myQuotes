@@ -15,9 +15,7 @@ class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Ap
         message = "Tik your tik, Talk your talk ",
         author = "Vybz Kartel"
     )
-    init {
-        addQuote(quoteTwo)
-    }
+
 
     val quotes = liveData{
         emit(dao.getQuotes())
