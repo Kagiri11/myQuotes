@@ -1,5 +1,6 @@
 package com.example.myquotes.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 
 import androidx.fragment.app.Fragment
@@ -12,12 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myquotes.R
+import com.example.myquotes.data.QuoteDataBase
 import com.example.myquotes.data.QuoteDatabaseDao
 import com.example.myquotes.databinding.FragmentQuoteBinding
 import com.example.myquotes.models.Quote
 
 
-class QuoteFragment() : Fragment() {
+class QuoteFragment : Fragment() {
 
     lateinit var viewModelFactory: QuoteViewModelFactory
     lateinit var viewModel: QuoteFragmentViewModel
@@ -29,17 +31,18 @@ class QuoteFragment() : Fragment() {
         // Inflate the layout for this fragment
         val binding : FragmentQuoteBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_quote, container, false)
 
-
-        viewModelFactory = QuoteViewModelFactory()
+        val application = requireNotNull(this.activity).application
+        val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
+        viewModelFactory = QuoteViewModelFactory(data,application)
         viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
         binding.btnMyQuotes.setOnClickListener {
             findNavController().navigate(R.id.action_quote_to_quotes)
         }
 
         viewModel.quotes.observe(viewLifecycleOwner, Observer { quotes->
-            val quote = quotes.random()
-            binding.tvAuthor.text=quote.author
-            binding.tvQuote.text = quote.message
+            val quote = quotes.size.toString()
+            binding.tvAuthor.text= quote
+
 
         })
 

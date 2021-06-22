@@ -11,7 +11,8 @@ import com.example.myquotes.models.Quote
     version = 1
 )
 abstract class QuoteDataBase : RoomDatabase(){
-    abstract fun getQuoteDatabaseDao(): QuoteDatabaseDao
+//    abstract fun getQuoteDatabaseDao(): QuoteDatabaseDao
+    abstract val quoteDatabaseDao: QuoteDatabaseDao
 
     companion object{
         @Volatile
