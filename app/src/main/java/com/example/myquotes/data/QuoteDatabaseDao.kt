@@ -17,5 +17,5 @@ interface QuoteDatabaseDao {
     suspend fun getQuotes():List<Quote>
 
     @Delete
-    suspend fun deleteQuote(quote: Quote)
+    suspend fun deleteQuote(quote:Quote)
 }

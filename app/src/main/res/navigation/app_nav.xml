@@ -19,5 +19,12 @@
         android:name="com.example.myquotes.ui.fragments.MyQuotesFragment"
         android:label="fragment_my_quote"
         tools:layout="@layout/fragment_my_quotes" >
+        <action
+            android:id="@+id/action_myQuotesFragment_to_addQuoteFragment"
+            app:destination="@id/addQuoteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addQuoteFragment"
+        android:name="com.example.myquotes.ui.fragments.AddQuoteFragment"
+        android:label="AddQuoteFragment" />
 </navigation>

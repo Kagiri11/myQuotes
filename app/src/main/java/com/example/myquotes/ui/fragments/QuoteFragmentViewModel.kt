@@ -16,15 +16,16 @@ class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Ap
         author = "Vybz Kartel"
     )
 
-
     val quotes = liveData{
         emit(dao.getQuotes())
     }
 
-    private fun addQuote(quote: Quote)=viewModelScope.launch {
+     fun addQuote(quote: Quote)=viewModelScope.launch {
         dao.addQuote(quote)
     }
 
-
-
+    fun deleteQuote(quote:Quote)= viewModelScope.launch {
+        dao.deleteQuote(quote)
+        println("${quote.id} has been deleted")
+    }
 }
