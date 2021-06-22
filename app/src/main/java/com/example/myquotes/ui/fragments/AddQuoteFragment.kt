@@ -26,15 +26,18 @@ class AddQuoteFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
         viewModelFactory = QuoteViewModelFactory(data,application)
-        
+
         viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
 
-        val message = binding.etQuoteMessage.text.toString()
-        val author = binding.etQuoteAuthor.text.toString()
-        val quote = Quote(message=message,author = author)
+//        val message = binding.etQuoteMessage.text.toString()
+//        val author = binding.etQuoteAuthor.text.toString()
+//        val quote = Quote(message=message,author = author)
         binding.btnAddQuote.setOnClickListener {
+            val message = binding.etQuoteMessage.text.toString()
+            val author = binding.etQuoteAuthor.text.toString()
+            val quote = Quote(message=message,author = author)
             viewModel.addQuote(quote)
-            findNavController().navigate(R.id.action_addQuoteFragment_to_quoteFragment)
+//            findNavController().navigate(R.id.action_addQuoteFragment_to_quoteFragment)
         }
 
         return binding.root
