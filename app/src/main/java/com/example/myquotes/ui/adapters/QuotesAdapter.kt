@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
 import com.example.myquotes.models.Quote
 
-class QuotesAdapter( private val quotes : List<Quote>) :  RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
+class QuotesAdapter(private val quotes : List<Quote>):  RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
+
     class QuotesAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val author : TextView = view.findViewById(R.id.tv_Author_Item)
         val message : TextView = view.findViewById(R.id.tv_Quote_Item)
@@ -25,6 +26,7 @@ class QuotesAdapter( private val quotes : List<Quote>) :  RecyclerView.Adapter<Q
         val quoteItem = quotes[position]
         holder.author.text=quoteItem.author
         holder.message.text = quoteItem.message
+
     }
 
     override fun getItemCount(): Int =quotes.size

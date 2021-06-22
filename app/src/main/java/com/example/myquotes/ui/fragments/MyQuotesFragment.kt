@@ -8,19 +8,36 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
+import com.example.myquotes.data.QuoteDataBase
+import com.example.myquotes.databinding.FragmentMyQuotesBinding
 import com.example.myquotes.ui.adapters.QuotesAdapter
 
 class MyQuotesFragment : Fragment() {
-    private lateinit var adapter: QuotesAdapter
+    lateinit var viewModelFactory: QuoteViewModelFactory
+    lateinit var viewModel: QuoteFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_quotes, container, false)
+
+        val binding : FragmentMyQuotesBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_quotes,container,false)
+
+        val application = requireNotNull(this.activity).application
+        val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
+        viewModelFactory = QuoteViewModelFactory(data,application)
+        viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
+
+        viewModel.quotes.observe(viewLifecycleOwner, Observer { quotes->
+            binding.rvQuotes.adapter=QuotesAdapter(quotes)
+        })
+
+        return binding.root
 
     }
 

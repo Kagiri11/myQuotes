@@ -17,6 +17,7 @@ import com.example.myquotes.data.QuoteDataBase
 import com.example.myquotes.data.QuoteDatabaseDao
 import com.example.myquotes.databinding.FragmentQuoteBinding
 import com.example.myquotes.models.Quote
+import com.example.myquotes.ui.adapters.QuotesAdapter
 
 
 class QuoteFragment : Fragment() {
@@ -39,9 +40,11 @@ class QuoteFragment : Fragment() {
             findNavController().navigate(R.id.action_quote_to_quotes)
         }
 
+
         viewModel.quotes.observe(viewLifecycleOwner, Observer { quotes->
-            val quote = quotes.size.toString()
-            binding.tvAuthor.text= quote
+            val quote = quotes.random()
+            binding.tvAuthor.text= quote.author
+            binding.tvQuote.text= quote.message
 
 
         })
@@ -49,5 +52,5 @@ class QuoteFragment : Fragment() {
         return binding.root
     }
 
-    private fun addQuote(){}
+
 }
