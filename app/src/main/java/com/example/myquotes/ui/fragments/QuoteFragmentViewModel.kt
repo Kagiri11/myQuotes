@@ -10,11 +10,15 @@ import kotlinx.coroutines.launch
 
 class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Application) : AndroidViewModel(application) {
 
-    private val quoteOne = Quote(message = "Give me the loving", author = "Sean Paul")
+    private val quoteOne = Quote(message = "Whether you think you can or cant, you are right", author = "Henry Ford")
     private val quoteTwo = Quote(
-        message = "Tik your tik, Talk your talk ",
-        author = "Vybz Kartel"
+        message = "Man never made any material as resilient as the human spirit",
+        author = "Bernard Williams"
     )
+
+    init {
+        addQuote(quoteOne)
+    }
 
     val quotes = liveData{
         emit(dao.getQuotes())

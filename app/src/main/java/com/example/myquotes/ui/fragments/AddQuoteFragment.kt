@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.myquotes.R
 import com.example.myquotes.data.QuoteDataBase
 import com.example.myquotes.databinding.FragmentAddQuoteBinding
@@ -25,6 +26,7 @@ class AddQuoteFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
         viewModelFactory = QuoteViewModelFactory(data,application)
+        
         viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
 
         val message = binding.etQuoteMessage.text.toString()
@@ -32,7 +34,7 @@ class AddQuoteFragment : Fragment() {
         val quote = Quote(message=message,author = author)
         binding.btnAddQuote.setOnClickListener {
             viewModel.addQuote(quote)
-            
+            findNavController().navigate(R.id.action_addQuoteFragment_to_quoteFragment)
         }
 
         return binding.root
