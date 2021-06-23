@@ -15,11 +15,6 @@ class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Ap
         message = "Man never made any material as resilient as the human spirit",
         author = "Bernard Williams"
     )
-
-    init {
-        addQuote(quoteOne)
-    }
-
     val quotes = liveData{
         emit(dao.getQuotes())
     }
