@@ -1,4 +1,4 @@
-package com.example.myquotes.ui.fragments
+    package com.example.myquotes.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -21,7 +21,7 @@ import com.example.myquotes.ui.adapters.QuotesAdapter
 class MyQuotesFragment : Fragment() {
     lateinit var viewModelFactory: QuoteViewModelFactory
     lateinit var viewModel: QuoteFragmentViewModel
-    lateinit var quotesAdapter: QuotesAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
