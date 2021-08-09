@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -22,8 +24,8 @@ import com.example.myquotes.ui.adapters.QuotesAdapter
 
 class QuoteFragment : Fragment() {
 
-    lateinit var viewModelFactory: QuoteViewModelFactory
-    lateinit var viewModel: QuoteFragmentViewModel
+
+    private val viewModel: QuoteFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +34,6 @@ class QuoteFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding : FragmentQuoteBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_quote, container, false)
 
-        val application = requireNotNull(this.activity).application
-        val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
-        viewModelFactory = QuoteViewModelFactory(data,application)
-        viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
         binding.btnMyQuotes.setOnClickListener {
             findNavController().navigate(R.id.action_quote_to_quotes)
         }

@@ -1,6 +1,6 @@
 package com.example.myquotes.ui.adapters
 
-import android.content.Context
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
 import com.example.myquotes.models.Quote
 import com.example.myquotes.ui.fragments.QuoteFragmentViewModel
-import kotlinx.coroutines.coroutineScope
 
-class QuotesAdapter(private val quotes : List<Quote>,val viewModel: QuoteFragmentViewModel):  RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
+class QuotesAdapter(private val quotes : List<Quote>,val viewModel: QuoteFragmentViewModel) :
+    RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
 
     private var quotelist = quotes as MutableList<Quote>
 
-
     inner class QuotesAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
         val author : TextView = view.findViewById(R.id.tv_Author_Item)
         val message : TextView = view.findViewById(R.id.tv_Quote_Item)
         val delBtn : ImageButton= view.findViewById(R.id.iv_Delete_Article)

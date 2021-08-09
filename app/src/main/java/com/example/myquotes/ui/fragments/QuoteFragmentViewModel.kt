@@ -8,13 +8,8 @@ import com.example.myquotes.data.QuoteDatabaseDao
 import com.example.myquotes.models.Quote
 import kotlinx.coroutines.launch
 
-class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Application) : AndroidViewModel(application) {
+class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao) : ViewModel() {
 
-    private val quoteOne = Quote(message = "Whether you think you can or cant, you are right", author = "Henry Ford")
-    private val quoteTwo = Quote(
-        message = "Man never made any material as resilient as the human spirit",
-        author = "Bernard Williams"
-    )
     val quotes = liveData{
         emit(dao.getQuotes())
     }
@@ -25,6 +20,5 @@ class QuoteFragmentViewModel(private val dao : QuoteDatabaseDao, application: Ap
 
     fun deleteQuote(quote:Quote)= viewModelScope.launch {
         dao.deleteQuote(quote)
-        println("${quote.id} has been deleted")
     }
 }
