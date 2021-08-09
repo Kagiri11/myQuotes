@@ -15,7 +15,7 @@ import com.example.myquotes.models.Quote
 
 class AddQuoteFragment : Fragment() {
     lateinit var viewModelFactory: QuoteViewModelFactory
-    lateinit var viewModel: QuoteFragmentViewModel
+    lateinit var viewModel: QuoteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class AddQuoteFragment : Fragment() {
         val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
         viewModelFactory = QuoteViewModelFactory(data,application)
 
-        viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteFragmentViewModel::class.java)
+        viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteViewModel::class.java)
 
         binding.btnAddQuote.setOnClickListener {
             val message = binding.etQuoteMessage.text.toString()

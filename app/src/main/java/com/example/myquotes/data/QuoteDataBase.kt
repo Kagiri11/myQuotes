@@ -4,20 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.myquotes.models.CachedQuoteEntity
 import com.example.myquotes.models.Quote
 
 @Database(
-    entities = [Quote::class],
-    version = 1
+    entities = [CachedQuoteEntity::class],
+    version = 2
 )
 abstract class QuoteDataBase : RoomDatabase(){
 //    abstract fun getQuoteDatabaseDao(): QuoteDatabaseDao
     abstract val quoteDatabaseDao: QuoteDatabaseDao
 
+
     companion object{
         @Volatile
         private var INSTANCE : QuoteDataBase?=null
-
+        val DATABASE_NAME= "quotes"
         fun getInstance(context: Context) : QuoteDataBase{
             synchronized(this){
                 var instance= INSTANCE
@@ -26,7 +28,7 @@ abstract class QuoteDataBase : RoomDatabase(){
                     instance =Room.databaseBuilder(
                         context.applicationContext,
                         QuoteDataBase::class.java,
-                        "quotes"
+                        DATABASE_NAME
                     )
                         .fallbackToDestructiveMigration()
                         .build()

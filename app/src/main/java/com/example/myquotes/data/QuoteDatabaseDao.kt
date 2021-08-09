@@ -5,17 +5,18 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.myquotes.models.CachedQuoteEntity
 import com.example.myquotes.models.Quote
 
 @Dao
 interface QuoteDatabaseDao {
 
     @Insert
-    suspend fun addQuote(quote:Quote)
+    suspend fun addQuote(quote:CachedQuoteEntity)
 
     @Query("SELECT * FROM quote ORDER BY id DESC")
-    suspend fun getQuotes():List<Quote>
+    suspend fun getQuotes():List<CachedQuoteEntity>
 
     @Delete
-    suspend fun deleteQuote(quote:Quote)
+    suspend fun deleteQuote(quote:CachedQuoteEntity)
 }

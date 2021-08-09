@@ -8,13 +8,14 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
+import com.example.myquotes.models.CachedQuoteEntity
 import com.example.myquotes.models.Quote
-import com.example.myquotes.ui.fragments.QuoteFragmentViewModel
+import com.example.myquotes.ui.fragments.QuoteViewModel
 
-class QuotesAdapter(private val quotes : List<Quote>,val viewModel: QuoteFragmentViewModel) :
+class QuotesAdapter(private val quotes : List<CachedQuoteEntity>, private val viewModel: QuoteViewModel) :
     RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
 
-    private var quotelist = quotes as MutableList<Quote>
+    private var quotelist = quotes as MutableList<CachedQuoteEntity>
 
     inner class QuotesAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val author : TextView = view.findViewById(R.id.tv_Author_Item)
