@@ -1,4 +1,4 @@
-    package com.example.myquotes.ui.fragments
+package com.example.myquotes.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -13,10 +14,12 @@ import com.example.myquotes.R
 import com.example.myquotes.data.QuoteDataBase
 import com.example.myquotes.databinding.FragmentMyQuotesBinding
 import com.example.myquotes.ui.adapters.QuotesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyQuotesFragment : Fragment() {
-    lateinit var viewModelFactory: QuoteViewModelFactory
-    lateinit var viewModel: QuoteViewModel
+
+    private val viewModel: QuoteViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -30,9 +33,7 @@ class MyQuotesFragment : Fragment() {
             findNavController().navigate(R.id.action_myQuotesFragment_to_addQuoteFragment)
         }
         val application = requireNotNull(this.activity).application
-        val data = QuoteDataBase.getInstance(application).quoteDatabaseDao
-        viewModelFactory = QuoteViewModelFactory(data,application)
-        viewModel= ViewModelProvider(this,viewModelFactory).get(QuoteViewModel::class.java)
+
 
         viewModel.quotes.observe(viewLifecycleOwner, Observer { quotes->
             binding.rvQuotes.adapter=QuotesAdapter(quotes,viewModel)

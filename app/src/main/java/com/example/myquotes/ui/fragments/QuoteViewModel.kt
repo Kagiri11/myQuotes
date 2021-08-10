@@ -1,11 +1,15 @@
 package com.example.myquotes.ui.fragments
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.myquotes.data.QuoteDatabaseDao
 import com.example.myquotes.models.CachedQuoteEntity
 import kotlinx.coroutines.launch
 
-class QuoteViewModel(private val dao : QuoteDatabaseDao) : ViewModel() {
+
+class QuoteViewModel @ViewModelInject
+     constructor(private val dao : QuoteDatabaseDao) : ViewModel() {
+
 
     val quotes = liveData{
         emit(dao.getQuotes())

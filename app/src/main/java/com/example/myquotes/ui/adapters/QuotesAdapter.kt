@@ -31,7 +31,7 @@ class QuotesAdapter(private val quotes : List<CachedQuoteEntity>, private val vi
 
     override fun onBindViewHolder(holder: QuotesAdapterViewHolder, position: Int) {
         val quoteItem = quotes[position]
-        holder.author.text=quoteItem.author
+        holder.author.text=quoteItem.id.toString()
         holder.message.text = quoteItem.message
         holder.delBtn.setOnClickListener {
             viewModel.deleteQuote(quoteItem)

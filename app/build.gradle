@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+
 }
 
 android {
@@ -42,27 +44,26 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     // Room
-    def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
-    def version_lifecycle_extensions = "2.2.0"
+
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
 
-    def lifecycle_version = "2.3.1"
+
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     //Fragments
-    def fragment_ktx="1.3.6"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
 
-    //Dagger Hilt
-    def hilt_version= "2.28-alpha"
+    //Hilt for Dependency Injection
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
 
     //Gson
     implementation 'com.google.code.gson:gson:2.8.5'

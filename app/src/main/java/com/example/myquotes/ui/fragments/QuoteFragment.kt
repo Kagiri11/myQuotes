@@ -11,11 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myquotes.R
 import com.example.myquotes.databinding.FragmentQuoteBinding
+import com.example.myquotes.models.CachedQuoteEntity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class QuoteFragment : Fragment() {
 
     private val viewModel: QuoteViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
