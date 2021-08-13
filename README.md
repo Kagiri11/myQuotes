@@ -26,5 +26,12 @@ To represent a table in Room, you prepend your data class with @Entity annotatio
  - @ColumnInfo -Use this annotation to tell room to use the provided name as the name of a column in the table
  - @Ignore - the annotated field wont be covered by Room for persistence
 
+#### Dao
+Normally interfaces, Daos layout the methods we would normally use to interact with our database. For this too, there are annotations to access and deal with the data from the database.
+
+#### Database
+Finally we get to talk about the db, this is the gateway to the app's persisted data. Annotated with @Database, the db is usually set up as an abstract class and subclasses RoomDatabase. At the point of annotation, we should provide the list of entities associated with it.
+Our database is also required to provide a function that returns a dao from which we can interact with the db.
+
 
 
