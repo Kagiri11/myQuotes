@@ -33,5 +33,10 @@ Normally interfaces, Daos layout the methods we would normally use to interact w
 Finally we get to talk about the db, this is the gateway to the app's persisted data. Annotated with @Database, the db is usually set up as an abstract class and subclasses RoomDatabase. At the point of annotation, we should provide the list of entities associated with it.
 Our database is also required to provide a function that returns a dao from which we can interact with the db.
 
+The following image is how Room is implemented in our application
+<p align="center">
+<img src="https://i.ibb.co/gSMzNC0/room.png" width="100" height="100">
+</p>
+
 
 
