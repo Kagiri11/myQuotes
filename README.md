@@ -35,7 +35,7 @@ Our database is also required to provide a function that returns a dao from whic
 
 The following image is how Room is implemented in our application
 <p align="center">
-<img src="https://i.ibb.co/gSMzNC0/room.png" width="100" height="100">
+<img src="https://i.ibb.co/gSMzNC0/room.png" width="300" height="300">
 </p>
 
 
