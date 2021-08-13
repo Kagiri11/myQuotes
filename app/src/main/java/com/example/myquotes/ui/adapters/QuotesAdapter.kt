@@ -1,18 +1,19 @@
 package com.example.myquotes.ui.adapters
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myquotes.R
 import com.example.myquotes.models.CachedQuoteEntity
-import com.example.myquotes.models.Quote
 import com.example.myquotes.ui.fragments.QuoteViewModel
 
-class QuotesAdapter(private val quotes : List<CachedQuoteEntity>, private val viewModel: QuoteViewModel) :
+class QuotesAdapter(private val quotes: List<CachedQuoteEntity>, private val viewModel: QuoteViewModel) :
     RecyclerView.Adapter<QuotesAdapter.QuotesAdapterViewHolder>(){
 
     private var quotelist = quotes as MutableList<CachedQuoteEntity>
@@ -29,21 +30,23 @@ class QuotesAdapter(private val quotes : List<CachedQuoteEntity>, private val vi
         )
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: QuotesAdapterViewHolder, position: Int) {
         val quoteItem = quotes[position]
-        holder.author.text=quoteItem.id.toString()
-        holder.message.text = quoteItem.message
-        holder.delBtn.setOnClickListener {
-            viewModel.deleteQuote(quoteItem)
-            deleteItem(position)
-            notifyDataSetChanged()
+        holder.apply {
+            message.text = "~ ${quoteItem.message}"
+            author.text= quoteItem.author
+            delBtn.setOnClickListener {
+                viewModel.deleteQuote(quoteItem)
+                deleteItem(position)
+                notifyDataSetChanged()
+            }
         }
-
-
     }
 
-    fun deleteItem(index: Int){
+    private fun deleteItem(index: Int){
         quotelist.removeAt(index)
     }
+
     override fun getItemCount(): Int =quotes.size
 }

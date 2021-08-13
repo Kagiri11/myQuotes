@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myquotes.R
-import com.example.myquotes.data.QuoteDataBase
 import com.example.myquotes.databinding.FragmentMyQuotesBinding
 import com.example.myquotes.ui.adapters.QuotesAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,12 +29,9 @@ class MyQuotesFragment : Fragment() {
         binding.fbAddQuote.setOnClickListener {
             findNavController().navigate(R.id.action_myQuotesFragment_to_addQuoteFragment)
         }
-        val application = requireNotNull(this.activity).application
 
-
-        viewModel.quotes.observe(viewLifecycleOwner, Observer { quotes->
-            binding.rvQuotes.adapter=QuotesAdapter(quotes,viewModel)
-
+        viewModel.quotes.observe(viewLifecycleOwner, { quotes->
+            binding.rvQuotes.adapter= QuotesAdapter(quotes,viewModel)
         })
 
         return binding.root

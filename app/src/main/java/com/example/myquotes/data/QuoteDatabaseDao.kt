@@ -12,7 +12,7 @@ interface QuoteDatabaseDao {
     suspend fun addQuote(quote:CachedQuoteEntity)
 
     @Query("SELECT * FROM quote ORDER BY id DESC")
-    suspend fun getQuotes():List<CachedQuoteEntity>
+    fun getQuotes():List<CachedQuoteEntity>
 
     @Delete
     suspend fun deleteQuote(quote:CachedQuoteEntity)
