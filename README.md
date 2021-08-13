@@ -16,9 +16,13 @@ Being among one of android's jetpack components, Room hugely simplifies and clea
 
 ### Elements of Room Database
 To use Room, we have this components;
-        - Entity
-        - Dao (Data Access Objects)
-        - Database
+- Entity
+- Dao (Data Access Objects)
+- Database
+
+#### Entity
+To represent a table in Room, you prepend your data class with @Entity annotation. Room will feature that class as a table and the class fields as the table's columns.
+
 
 
 
