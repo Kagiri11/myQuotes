@@ -10,5 +10,15 @@ I have used Truth for Unit and Instrumented testing.
 - Test Driven Development
 
 ## Room and how to use it
-So, what is this Room thing? Room is an ORM (Object Relational Mapping) library used for data persistence. 
+So, what is this Room thing? Room is an ORM (Object Relational Mapping) library used for data persistence. What Room does is that it provides an abstraction layer over SQLite making it very easy to play around with databases while giving you SQLites powerful properties.
+
+Being among one of android's jetpack components, Room hugely simplifies and cleans how you work with SQLiteDatabase objects. One of its benefits is that SQL queries get verified at compile time. This is good cause if there's an error it's you as a dev that will experience it rather than pushing it to runtime.
+
+### Elements of Room Database
+To use Room, we have this components;
+        - Entity
+        - Dao (Data Access Objects)
+        - Database
+
+
 
