@@ -22,7 +22,9 @@ To use Room, we have this components;
 
 #### Entity
 To represent a table in Room, you prepend your data class with @Entity annotation. Room will feature that class as a table and the class fields as the table's columns.
-
+ - @PrimaryKey -You use this to tell room to use that field as the primary key of the table
+ - @ColumnInfo -Use this annotation to tell room to use the provided name as the name of a column in the table
+ - @Ignore - the annotated field wont be covered by Room for persistence
 
 
 
