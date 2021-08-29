@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 class QuoteViewModel @ViewModelInject
      constructor(private val dao : QuoteDatabaseDao) : ViewModel() {
 
-
     val quotes = liveData{
         emit(dao.getQuotes())
     }

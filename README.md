@@ -37,6 +37,3 @@ The following image is how Room is implemented in our application
 <p align="center">
 <img src="https://i.ibb.co/gSMzNC0/room.png" width="300" height="300">
 </p>
-
-
-
