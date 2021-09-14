@@ -12,7 +12,6 @@ import com.example.myquotes.models.Quote
     version = 2
 )
 abstract class QuoteDataBase : RoomDatabase(){
-//    abstract fun getQuoteDatabaseDao(): QuoteDatabaseDao
     abstract val quoteDatabaseDao: QuoteDatabaseDao
 
 

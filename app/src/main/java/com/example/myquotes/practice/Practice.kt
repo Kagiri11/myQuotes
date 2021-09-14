@@ -1,9 +1,7 @@
 package com.example.myquotes.practice
 
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.flow.*
 
 fun simple(): Flow<Int> = flow {
@@ -14,15 +12,18 @@ fun simple(): Flow<Int> = flow {
     }
 }
 
-fun main() {
+fun main()= runBlocking {
+    doThis()
+}
 
-    val  greats = flowOf("Charles","Kagiri","Maina")
-    val booty= showNames()
-    runBlocking {
-        val names = mutableListOf("Joan", "Mary", "Magdalene", "Hailey", "Kygo", "Rita").asFlow().collect {
-            println(it)
-        }
+suspend fun doThis()= coroutineScope {
+    val job1=launch {
+        delay(5000L)
+        println("World One")
     }
+    println("Hello")
+    job1.join()
+    println("Done")
 }
 
 fun showNames(): Flow<String> = flow{
